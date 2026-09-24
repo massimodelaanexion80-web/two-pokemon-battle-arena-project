@@ -143,7 +143,7 @@ It also helped me understand why keeping functions separated makes the code easi
 
 ## Project Links
 
-- GitHub Repository: 
+- GitHub Repository: https://github.com/massimodelaanexion80-web/two-pokemon-battle-arena-project/tree/main
 - Live Site: https://massimodelaanexion80-web.github.io/two-pokemon-battle-arena-project/
 
 ---

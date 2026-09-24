@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="A two-Pokémon battle arena powered by PokéAPI."
+  />
+  <title>Pokémon Battle Arena</title>
+  <link rel="preconnect" href="https://pokeapi.co" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="site-header">
+      <p class="eyebrow">WEB 1 · POKÉAPI PROJECT</p>
+      <h1>Pokémon Battle Arena</h1>
+      <p class="subtitle">
+        Choose two fighters, pick a move, and battle until one Pokémon reaches 0 HP.
+      </p>
+    </header>
+
+    <!-- PICKER SCREEN -->
+    <section id="picker-screen" class="screen" aria-labelledby="picker-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">STEP 1</p>
+          <h2 id="picker-title">Choose your fighters</h2>
+        </div>
+        <span class="status-pill" id="api-status">PokéAPI ready</span>
+      </div>
+
+      <div class="picker-grid">
+        <!-- PLAYER 1 -->
+        <article class="picker-panel player-one-panel">
+          <div class="player-label">
+            <span>Player 1</span>
+            <strong>Fighter A</strong>
+          </div>
+
+          <div class="search-wrapper">
+            <label for="search-player-1">Search Pokémon</label>
+            <input
+              id="search-player-1"
+              class="pokemon-search"
+              data-player="1"
+              type="search"
+              placeholder="Try: pikachu"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <div
+              id="suggestions-player-1"
+              class="suggestions"
+              role="listbox"
+              aria-label="Player 1 Pokémon suggestions"
+            ></div>
+          </div>
+
+          <div id="preview-player-1" class="fighter-preview">
+            <div class="empty-state">
+              <div class="pokeball-icon" aria-hidden="true"></div>
+              <p>Search and select a Pokémon.</p>
+            </div>
+          </div>
+        </article>
+
+        <div class="versus-badge" aria-hidden="true">VS</div>
+
+        <!-- PLAYER 2 -->
+        <article class="picker-panel player-two-panel">
+          <div class="player-label">
+            <span>Player 2</span>
+            <strong>Fighter B</strong>
+          </div>
+
+          <div class="search-wrapper">
+            <label for="search-player-2">Search Pokémon</label>
+            <input
+              id="search-player-2"
+              class="pokemon-search"
+              data-player="2"
+              type="search"
+              placeholder="Try: charizard"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <div
+              id="suggestions-player-2"
+              class="suggestions"
+              role="listbox"
+              aria-label="Player 2 Pokémon suggestions"
+            ></div>
+          </div>
+
+          <div id="preview-player-2" class="fighter-preview">
+            <div class="empty-state">
+              <div class="pokeball-icon" aria-hidden="true"></div>
+              <p>Search and select a Pokémon.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="picker-help">
+        The battle starts automatically when both Pokémon have been selected.
+      </p>
+    </section>
+
+    <!-- BATTLE SCREEN -->
+    <section id="battle-screen" class="screen hidden" aria-labelledby="battle-title">
+      <div class="section-heading battle-heading">
+        <div>
+          <p class="section-kicker">STEP 2</p>
+          <h2 id="battle-title">Battle!</h2>
+        </div>
+        <button id="new-match-button" class="secondary-button" type="button">
+          New match
+        </button>
+      </div>
+
+      <div class="battle-grid">
+        <article id="battle-player-1" class="battle-card player-one-card"></article>
+
+        <div class="battle-center">
+          <div class="versus-badge battle-vs" aria-hidden="true">VS</div>
+          <div id="battle-log" class="battle-log" aria-live="polite">
+            Choose any move to attack.
+          </div>
+        </div>
+
+        <article id="battle-player-2" class="battle-card player-two-card"></article>
+      </div>
+
+      <div id="result-panel" class="result-panel hidden" aria-live="assertive">
+        <p class="result-label">MATCH OVER</p>
+        <h3 id="result-title"></h3>
+        <p id="result-message"></p>
+        <button id="play-again-button" class="primary-button" type="button">
+          Play again
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Data provided by
+      <a href="https://pokeapi.co/" target="_blank" rel="noreferrer">PokéAPI</a>.
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

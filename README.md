@@ -144,7 +144,7 @@ It also helped me understand why keeping functions separated makes the code easi
 ## Project Links
 
 - GitHub Repository: 
-- Live Site: 
+- Live Site: https://massimodelaanexion80-web.github.io/two-pokemon-battle-arena-project/
 
 ---
 

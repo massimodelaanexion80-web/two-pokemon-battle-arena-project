@@ -1,53 +1,53 @@
 # Pokémon Battle Arena ⚡
 
-This is my Pokémon Battle Arena project for Web 1.
+Este es mi proyecto de Pokémon Battle Arena para Web 1.
 
-The project uses PokéAPI to search for two Pokémon, load their information and let them battle each other using four different moves.
+La idea del proyecto es usar PokéAPI para buscar dos Pokémon, cargar su información y después hacer que peleen entre ellos usando distintos movimientos.
 
-The main goal was to practice `fetch`, `async/await`, debounce, DOM events and managing the state of the application.
-
----
-
-## Search and Debounce
-
-Each player has a search box where they can look for a Pokémon.
-
-The Pokémon list is loaded from PokéAPI and then filtered depending on what the user types.
-
-I added a debounce of around 400ms so the search does not run every single time a key is pressed. The app waits until the user stops typing for a moment before searching.
-
-The Pokémon list is also saved after the first request so the same information does not have to be requested again every time.
-
-If there are no matches, the app shows a message instead of leaving the search empty.
+El objetivo principal era practicar `fetch`, `async/await`, debounce, eventos del DOM y también aprender a manejar mejor el estado de una aplicación.
 
 ---
 
-## Battle System
+## Búsqueda y Debounce
 
-Once both Pokémon are selected, the battle starts automatically.
+Cada jugador tiene su propio buscador para buscar el Pokémon que quiere usar.
 
-Each Pokémon shows:
+La lista de Pokémon se carga desde PokéAPI y después se filtra dependiendo de lo que vaya escribiendo el usuario.
 
-- its sprite
-- its HP
-- up to four moves
-- an HP bar
+También agregué un debounce de aproximadamente 400ms para que la búsqueda no se ejecute cada vez que se presiona una tecla. Básicamente, la aplicación espera un momento hasta que el usuario deje de escribir y después hace la búsqueda.
 
-The battle system is simple because the project does not require turns, type advantages or real Pokémon damage calculations.
+La lista de Pokémon también se guarda después de la primera petición, para no tener que pedir la misma información a la API una y otra vez.
 
-Every time a move is clicked, the opponent receives a random amount of damage between 5 and 20 HP.
-
-The HP bar and HP number update after every attack, and the HP can never go below 0.
-
-When one Pokémon reaches 0 HP, the battle ends, the move buttons are disabled and the winner is shown.
-
-The player can then start another match using the Play Again button.
+Si no se encuentra ningún Pokémon que coincida con la búsqueda, la aplicación muestra un mensaje en vez de simplemente dejar el espacio vacío.
 
 ---
 
-## Project Files
+## Sistema de Batalla
 
-The project is divided into four main files:
+Cuando los dos Pokémon ya fueron seleccionados, la batalla empieza automáticamente.
+
+Cada Pokémon muestra:
+
+- su sprite
+- su HP
+- hasta cuatro movimientos
+- una barra de vida
+
+El sistema de batalla es bastante simple porque el proyecto no pedía turnos, ventajas por tipo ni cálculos reales de daño de Pokémon.
+
+Cada vez que se presiona uno de los movimientos, el Pokémon rival recibe una cantidad aleatoria de daño entre 5 y 20 HP.
+
+Después de cada ataque se actualiza tanto el número de HP como la barra de vida, y el HP nunca puede bajar de 0.
+
+Cuando uno de los Pokémon llega a 0 HP, la batalla termina, los botones de movimientos se desactivan y se muestra cuál Pokémon ganó.
+
+Después se puede empezar otra partida usando el botón **Play Again**.
+
+---
+
+## Archivos del Proyecto
+
+El proyecto está dividido principalmente en cuatro archivos:
 
 ```text
 pokemon-battle-arena/
@@ -60,17 +60,17 @@ pokemon-battle-arena/
 
 ### index.html
 
-Contains the main structure of the application, including the Pokémon selection screen and the battle arena.
+Contiene la estructura principal de la aplicación, incluyendo la pantalla para seleccionar los Pokémon y la arena de batalla.
 
 ### style.css
 
-Contains the design of the project, responsive layout, HP bars and battle animations.
+Contiene todo el diseño del proyecto, el responsive, las barras de HP y las animaciones de la batalla.
 
 ### script.js
 
-Contains most of the logic of the project.
+Aquí está prácticamente toda la lógica del proyecto.
 
-Some of the main functions are:
+Algunas de las funciones principales son:
 
 ```js
 fetchPokemonList()
@@ -85,70 +85,71 @@ endBattle()
 resetGame()
 ```
 
-I tried to keep the functions separated so the code that gets information from the API is not mixed too much with the code that updates the page.
+Traté de mantener las funciones separadas para que la parte que obtiene información de la API no quede toda mezclada con la parte que actualiza la página.
 
 ---
 
-## How to Run It
+## Cómo Ejecutarlo
 
-The project does not need an API key or backend.
+El proyecto no necesita una API key ni un backend.
 
-The easiest way to run it is with Live Server in VS Code.
+La forma más sencilla de ejecutarlo es usando Live Server en VS Code.
 
-1. Open the project folder in VS Code.
-2. Open `index.html`.
-3. Right-click and select **Open with Live Server**.
-4. Search for a Pokémon for Player 1.
-5. Search for another Pokémon for Player 2.
-6. Select both Pokémon.
-7. Start battling.
-
----
-
-## Things I Tested
-
-Before finishing the project I tested different parts of the app to make sure everything worked correctly.
-
-Some of the things I tested were:
-
-- searching for different Pokémon
-- searching for Pokémon that do not exist
-- selecting Pokémon for both players
-- loading sprites
-- loading HP
-- loading four moves
-- attacking from both sides
-- updating the HP bar
-- reaching 0 HP
-- showing the winner
-- disabling moves after the battle ends
-- using Play Again
-- starting a completely new battle
-- using different Pokémon after resetting
-- the responsive layout on smaller screens
+1. Abrir la carpeta del proyecto en VS Code.
+2. Abrir `index.html`.
+3. Dar clic derecho y seleccionar **Open with Live Server**.
+4. Buscar un Pokémon para el Jugador 1.
+5. Buscar otro Pokémon para el Jugador 2.
+6. Seleccionar ambos Pokémon.
+7. Empezar la batalla.
 
 ---
 
-## What I Learned
+## Cosas que Probé
 
-The part I found most useful was learning how to connect different parts of JavaScript together.
+Antes de terminar el proyecto probé diferentes partes de la aplicación para asegurarme de que todo funcionara correctamente.
 
-It was not only about making a `fetch` request. The search, API information, selected Pokémon, HP, move buttons, battle and reset all depend on the current state of the application.
+Algunas de las cosas que probé fueron:
 
-Working on this project helped me understand better how `async/await`, `fetch`, events and the DOM can work together in the same application.
-
-It also helped me understand why keeping functions separated makes the code easier to read and fix.
+- buscar diferentes Pokémon
+- buscar Pokémon que no existen
+- seleccionar Pokémon para ambos jugadores
+- cargar los sprites
+- cargar el HP
+- cargar hasta cuatro movimientos
+- atacar desde ambos lados
+- actualizar la barra de HP
+- llegar a 0 HP
+- mostrar al ganador
+- desactivar los movimientos cuando termina la batalla
+- usar el botón Play Again
+- empezar una partida completamente nueva
+- usar Pokémon diferentes después de reiniciar
+- probar el diseño responsive en pantallas más pequeñas
 
 ---
 
-## Project Links
+## Qué Aprendí
+
+Lo que más me sirvió de este proyecto fue entender mejor cómo conectar diferentes partes de JavaScript entre sí.
+
+No se trataba solamente de hacer un `fetch` y mostrar información en pantalla. La búsqueda, la información que viene de la API, los Pokémon seleccionados, el HP, los botones de movimientos, la batalla y el reinicio dependen todos del estado actual de la aplicación.
+
+Este proyecto me ayudó a entender mejor cómo `async/await`, `fetch`, los eventos y el DOM pueden trabajar juntos dentro de una misma aplicación.
+
+También me ayudó a entender por qué es mejor mantener las funciones separadas, porque hace que el código sea más fácil de leer, entender y corregir si algo falla.
+
+---
+
+## Links del Proyecto
 
 - GitHub Repository: https://github.com/massimodelaanexion80-web/two-pokemon-battle-arena-project/tree/main
+- 
 - Live Site: https://massimodelaanexion80-web.github.io/two-pokemon-battle-arena-project/
 
 ---
 
-## Author
+## Autor
 
 Massimo  
 Web 1

@@ -30,7 +30,7 @@ Each Pokémon shows:
 
 - its sprite
 - its HP
-- four moves
+- up to four moves
 - an HP bar
 
 The battle system is simple because the project does not require turns, type advantages or real Pokémon damage calculations.
